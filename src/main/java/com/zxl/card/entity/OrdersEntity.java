@@ -61,5 +61,15 @@ public class OrdersEntity implements Serializable {
     @Column(name = "o_state")
     private Integer oState;
 
+    /**
+     * 每页条数
+     */
+    private Integer pageSize;
+
+    /**
+     * 当前页
+     */
+    private Integer currentPage;
+
     private static final long serialVersionUID = 1L;
 }
