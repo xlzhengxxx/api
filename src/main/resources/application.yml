@@ -2,30 +2,28 @@ server:
   port: 8000
 
 spring:
-  #数据库
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1/coffee_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=CTT
+    url: jdbc:mysql://127.0.0.1/gamecard?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=CTT
     username: root
     password: root
-    #连接池
     hikari:
-      minimum-idle: 5                       #HikariCP在连接池中维护的最小空闲连接数
-      maximum-pool-size: 15                 #配置最大池大小
-      auto-commit: true                     #t配置从池返回的连接的默认自动提交行为
-      idle-timeout: 30000                   #是允许连接在连接池中空闲的最长时间
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
       pool-name: DatebookHikariCP
-      max-lifetime: 120000                  #是池中连接关闭后的最长生命周期
-      connection-timeout: 30000             #是客户端等待连接池连接的最大毫秒数
+      max-lifetime: 120000
+      connection-timeout: 30000
       connection-test-query: SELECT 1
 
 
 mybatis:
-  mapper-locations: classpath:mapper/*.xml  #配置mapper.xml文件所在位置
+  mapper-locations: classpath:mapper/*.xml
   configuration:
-    map-underscore-to-camel-case: true      #开启驼峰命名规则，不然某些表的字段名找不到实体类的对应的属性会为 null
+    map-underscore-to-camel-case: true
 
 pagehelper:
-  helperDialect: mysql                      #设置数据库
-  reasonable: true                          #启用分页合理化参数
+  helperDialect: mysql
+  reasonable: true
   supportMethodsArguments: true

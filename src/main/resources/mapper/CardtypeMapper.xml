@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxl.card.mapper.CardtypeMapper">
+  <resultMap id="BaseResultMap" type="com.zxl.card.entity.CardtypeEntity">
+    <!--@mbg.generated generated on Fri May 22 10:45:30 CST 2020.-->
+    <!--@Table cardtype-->
+    <id column="t_id" jdbcType="INTEGER" property="tId" />
+    <result column="t_name" jdbcType="VARCHAR" property="tName" />
+    <result column="t_img" jdbcType="VARCHAR" property="tImg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri May 22 10:45:30 CST 2020.-->
+    t_id, t_name, t_img
+  </sql>
+</mapper>

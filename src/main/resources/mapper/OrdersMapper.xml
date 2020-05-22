@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxl.card.mapper.OrdersMapper">
+  <resultMap id="BaseResultMap" type="com.zxl.card.entity.OrdersEntity">
+    <!--@mbg.generated generated on Fri May 22 10:45:46 CST 2020.-->
+    <!--@Table orders-->
+    <id column="o_id" jdbcType="INTEGER" property="oId" />
+    <result column="o_date" jdbcType="TIMESTAMP" property="oDate" />
+    <result column="t_id" jdbcType="INTEGER" property="tId" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="m_id" jdbcType="INTEGER" property="mId" />
+    <result column="o_price" jdbcType="VARCHAR" property="oPrice" />
+    <result column="c_id" jdbcType="INTEGER" property="cId" />
+    <result column="o_state" jdbcType="INTEGER" property="oState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri May 22 10:45:46 CST 2020.-->
+    o_id, o_date, t_id, u_id, m_id, o_price, c_id, o_state
+  </sql>
+</mapper>
