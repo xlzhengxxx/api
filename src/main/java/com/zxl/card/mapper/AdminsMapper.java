@@ -11,8 +11,8 @@ import java.util.List;
 public interface AdminsMapper extends Mapper<AdminsEntity> {
     /**
      * 根据条件查询用户信息
-     * @param usersEntity 用户实体
+     * @param adminsEntity 用户实体
      * @return
      */
-    List<AdminsEntity> selectAdmins(AdminsEntity usersEntity);
+    List<AdminsEntity> selectAdmins(AdminsEntity adminsEntity);
 }

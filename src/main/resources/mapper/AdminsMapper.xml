@@ -12,4 +12,19 @@
   <sql id="Base_Column_List">
     a_id, a_number, a_name, a_password, a_email
   </sql>
+
+  <!--查询满足条件的管理员信息-->
+  <select id="selectAdmins" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from admins
+    <where>
+      <if test="aNumber != null and aNumber != ''">
+        a_number like concat('%',#{aNumber},'%')
+      </if>
+      <if test="aName != null and aName != ''">
+        and a_name like concat('%',#{aName},'%')
+      </if>
+    </where>
+
+  </select>
 </mapper>

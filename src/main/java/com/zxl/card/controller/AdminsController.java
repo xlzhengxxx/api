@@ -57,8 +57,8 @@ public class AdminsController {
      * @param adminsEntity
      * @return
      */
-    @RequestMapping(value = "/updateUsers")
-    public Result updateUsers(@RequestBody AdminsEntity adminsEntity){
+    @RequestMapping(value = "/updateAdmins")
+    public Result updateAdmins(@RequestBody AdminsEntity adminsEntity){
         int i = adminsService.updateAdmins(adminsEntity);
         if (i > 0){
             return Result.ok("修改管理员信息成功！");
