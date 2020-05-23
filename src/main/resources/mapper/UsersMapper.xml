@@ -21,7 +21,7 @@
     from users
     <where>
       <if test="uNumber != null and uNumber != ''">
-        u_number like concat('%',#{uName},'%')
+        u_number like concat('%',#{uNumber},'%')
       </if>
       <if test="uName != null and uName != ''">
         and u_name like concat('%',#{uName},'%')
