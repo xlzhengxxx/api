@@ -12,4 +12,8 @@
     <!--@mbg.generated generated on Fri May 22 10:45:30 CST 2020.-->
     t_id, t_name, t_img
   </sql>
+
+  <select id="selectCardtype" resultMap="BaseResultMap">
+
+  </select>
 </mapper>
