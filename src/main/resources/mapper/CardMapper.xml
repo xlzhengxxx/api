@@ -10,9 +10,25 @@
     <result column="c_type" jdbcType="INTEGER" property="cType" />
     <result column="m_id" jdbcType="INTEGER" property="mId" />
     <result column="c_price" jdbcType="DOUBLE" property="cPrice" />
+    <result column="c_state" jdbcType="INTEGER" property="cState" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Fri May 22 10:45:23 CST 2020.-->
-    c_id, c_number, c_password, c_type, m_id, c_price
+    c_id, c_number, c_password, c_type, m_id, c_price,c_state
   </sql>
+  <select id="selectCard" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from card
+    <where>
+      <if test="cNumber != null and cNumber != ''">
+        c_number like concat('%',#{cNumber},'%')
+      </if>
+      <if test="cType != null and cType != ''">
+        and c_type = #{cType}
+      </if>
+      <if test="mId != null and mId != ''">
+        and m_id = #{mId}
+      </if>
+    </where>
+  </select>
 </mapper>

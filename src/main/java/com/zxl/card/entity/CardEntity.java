@@ -49,6 +49,12 @@ public class CardEntity implements Serializable {
     private Double cPrice;
 
     /**
+     * 点卡状态
+     */
+    @Column(name="c_state")
+    private Integer cState;
+
+    /**
      * 每页条数
      */
     private Integer pageSize;

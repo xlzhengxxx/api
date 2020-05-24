@@ -9,11 +9,16 @@
     <result column="t_img" jdbcType="VARCHAR" property="tImg" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated generated on Fri May 22 10:45:30 CST 2020.-->
     t_id, t_name, t_img
   </sql>
 
   <select id="selectCardtype" resultMap="BaseResultMap">
-
+    select <include refid="Base_Column_List"></include>
+    from cardtype
+    <where>
+      <if test="tName != null and tName != ''">
+       t_name like concat('%',#{tName},'%')
+      </if>
+    </where>
   </select>
 </mapper>

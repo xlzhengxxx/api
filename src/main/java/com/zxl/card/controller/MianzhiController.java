@@ -73,5 +73,16 @@ public class MianzhiController {
         }
         return Result.error("没有查询到满足条件的面值信息！");
     }
+    @RequestMapping(value = "/selectmianzhi")
+    public Result selectmianzhi(MianzhiEntity mianzhiEntity){
+        PageInfo<MianzhiEntity> pageInfo = mianzhiService.selectMianzhi(mianzhiEntity);
+        List<MianzhiEntity> list = pageInfo.getList();
+        if (list.size() > 0 && list !=null){
+            Map<String, Object> map = new HashMap<>();
+            map.put("dataList",list);
+            return Result.ok(map);
+        }
+        return Result.error("没有查询到满足条件的面值信息！");
+    }
 
 }

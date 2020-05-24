@@ -31,7 +31,7 @@ public class CaretypeController {
      * @return
      */
     @RequestMapping(value = "/addCardtype")
-    public Result addCard(@RequestBody CardtypeEntity cardtypeEntity){
+    public Result addCardtype(@RequestBody CardtypeEntity cardtypeEntity){
         int i = cardtypeService.addCardtype(cardtypeEntity);
         if (i > 0){
             return Result.ok("添加点卡种类信息成功！");
@@ -45,7 +45,7 @@ public class CaretypeController {
      * @return
      */
     @RequestMapping(value = "/deleteCardtype")
-    public Result deleteCard(@RequestParam Integer tId){
+    public Result deleteCardtype(@RequestParam Integer tId){
         int i = cardtypeService.deleteCardtype(tId);
         if (i > 0){
             return Result.ok("删除点卡种类信息成功！");
@@ -59,7 +59,7 @@ public class CaretypeController {
      * @return
      */
     @RequestMapping(value = "/updateCardtype")
-    public Result updateCard(@RequestBody CardtypeEntity cardtypeEntity){
+    public Result updateCardtype(@RequestBody CardtypeEntity cardtypeEntity){
         int i = cardtypeService.updateCardtype(cardtypeEntity);
         if (i > 0){
             return Result.ok("修改点卡种类信息成功！");
@@ -73,7 +73,7 @@ public class CaretypeController {
      * @return
      */
     @RequestMapping(value = "/selectCardtype")
-    public Result selectCard(CardtypeEntity cardtypeEntity){
+    public Result selectCardtype(CardtypeEntity cardtypeEntity){
         PageInfo<CardtypeEntity> pageInfo = cardtypeService.selectCardtype(cardtypeEntity);
         List<CardtypeEntity> list = pageInfo.getList();
         if (list.size() > 0 && list !=null){
