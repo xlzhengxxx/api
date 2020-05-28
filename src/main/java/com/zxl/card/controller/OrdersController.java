@@ -54,7 +54,7 @@ public class OrdersController {
     }
 
     /**
-     * 修改点卡种类信息
+     * 修改订单信息
      * @param ordersEntity
      * @return
      */
@@ -86,6 +86,35 @@ public class OrdersController {
             return Result.ok(map);
         }
         return Result.error("没有查询到满足条件的订单信息！");
+    }
+
+    /**
+     * 查询满足条件的订单信息
+     * @return
+     */
+    @RequestMapping(value = "/selectWeekOrders")
+    public Result selectWeekOrders(){
+        int i1 = ordersService.selectWeekOrders();
+        int i2 = ordersService.selectTodayOrders();
+        int i3 = ordersService.selectHistoryOrders();
+        Map<String, Object> map = new HashMap<>();
+        map.put("i1",i1);
+        map.put("i2",i2);
+        map.put("i3",i3);
+        return Result.ok(map);
+    }
+
+    /**
+     * 查询满足条件的订单信息
+     * @param ordersEntity 订单实体
+     * @return
+     */
+    @RequestMapping(value = "/selectPriceSum")
+    public Result selectPriceSum(OrdersEntity ordersEntity){
+        List<OrdersEntity> list= ordersService.selectPriceSum(ordersEntity);
+        Map<String, Object> map = new HashMap<>();
+        map.put("tname",list);
+        return Result.ok(map);
     }
 
 }

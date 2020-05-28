@@ -11,4 +11,14 @@
     <!--@mbg.generated generated on Fri May 22 10:45:38 CST 2020.-->
     m_id, m_name
   </sql>
+
+  <select id="selectMianzhi" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from mianzhi
+    <where>
+      <if test="mName != null and mName != ''">
+        m_name like concat('%',#{mName},'%')
+      </if>
+    </where>
+  </select>
 </mapper>

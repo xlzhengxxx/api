@@ -43,4 +43,9 @@ public class AdminsServiceImpl implements AdminsService{
         return new PageInfo<>(list);
     }
 
+    @Override
+    public AdminsEntity login(String aNumber, String aPassword) {
+        return adminsMapper.login(aNumber,aPassword);
+    }
+
 }

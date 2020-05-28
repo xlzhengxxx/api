@@ -87,4 +87,21 @@ public class AdminsController {
         return Result.error("没有查询到满足条件的管理员信息！");
     }
 
+    /**
+     *
+     * @param aNumber
+     * @param aPassword
+     * @return
+     */
+    @RequestMapping(value = "/login")
+    public Result Login(@RequestParam String aNumber,@RequestParam String aPassword){
+        AdminsEntity adminsEntity = adminsService.login(aNumber, aPassword);
+        if (adminsEntity != null){
+            Map<String, Object> map = new HashMap<>();
+            map.put("adminsEntity",adminsEntity);
+            return Result.ok(map);
+        }
+        return Result.error("登陆失败！");
+    }
+
 }

@@ -33,9 +33,9 @@ public class CardController {
     public Result addCard(@RequestBody CardEntity cardEntity){
         int i = cardService.addCard(cardEntity);
         if (i > 0){
-            return Result.ok("添加用户信息成功！");
+            return Result.ok("添加点卡信息成功！");
         }
-        return Result.error("添加用户信息失败！");
+        return Result.error("添加用点卡信息失败！");
     }
 
     /**
@@ -85,5 +85,26 @@ public class CardController {
             return Result.ok(map);
         }
         return Result.error("没有查询到满足条件的点卡信息！");
+    }
+
+    /**
+     * 查询满足条件的点卡信息
+     * @param cardEntity 用户实体
+     * @return
+     */
+    @RequestMapping(value = "/selectCardUse")
+    public Result selectCardUse(CardEntity cardEntity){
+        PageInfo<CardEntity> pageInfo = cardService.selectCardUse(cardEntity);
+        List<CardEntity> list = pageInfo.getList();
+        if (list.size() > 0 && list !=null){
+            Map<String, Object> map = new HashMap<>();
+            map.put("dataList",list);
+            //获取总页数，总条数，当前页数
+            map.put("pages",pageInfo.getPages());
+            map.put("total",pageInfo.getTotal());
+            map.put("pageNum",pageInfo.getPageNum());
+            return Result.ok(map);
+        }
+        return Result.error("暂无点卡！");
     }
 }

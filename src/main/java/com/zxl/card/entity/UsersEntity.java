@@ -1,6 +1,7 @@
 package com.zxl.card.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -55,6 +56,8 @@ public class UsersEntity implements Serializable {
     @Column(name = "u_state")
     private Integer uState;
 
+    @Column(name = "u_date")
+    private Date uDate;
     /**
      * 每页条数
      */

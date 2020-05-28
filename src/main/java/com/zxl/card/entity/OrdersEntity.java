@@ -3,7 +3,10 @@ package com.zxl.card.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
 * ${description}
@@ -22,6 +25,7 @@ public class OrdersEntity implements Serializable {
     /**
      * 订单日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "o_date")
     private Date oDate;
 
@@ -55,6 +59,8 @@ public class OrdersEntity implements Serializable {
     @Column(name = "c_id")
     private Integer cId;
 
+    private String pSum;
+
     /**
      * 订单状态：1为未付款，2为已付款，3为已发货，4为已完成
      */
@@ -70,6 +76,22 @@ public class OrdersEntity implements Serializable {
      * 当前页
      */
     private Integer currentPage;
+
+    /**
+     * 点卡账号
+     */
+    private String cNumber;
+
+    /**
+     * 点卡密码
+     */
+    private String cPassword;
+    private String tName;
+
+    private String uNumber;
+
+    private String mName;
+
 
     private static final long serialVersionUID = 1L;
 }

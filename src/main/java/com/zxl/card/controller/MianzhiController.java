@@ -52,6 +52,19 @@ public class MianzhiController {
         }
         return Result.error("删除面值信息失败！");
     }
+    /**
+     * 修改订单信息
+     * @param mianzhiEntity
+     * @return
+     */
+    @RequestMapping(value = "/updateMianzhi")
+    public Result updateMianzhi(@RequestBody MianzhiEntity mianzhiEntity){
+        int i = mianzhiService.updateMianzhi(mianzhiEntity);
+        if (i > 0){
+            return Result.ok("修改面值信息成功！");
+        }
+        return Result.error("修改面值信息失败！");
+    }
 
     /**
      * 查询满足条件的面值信息
@@ -69,17 +82,6 @@ public class MianzhiController {
             map.put("pages",pageInfo.getPages());
             map.put("total",pageInfo.getTotal());
             map.put("pageNum",pageInfo.getPageNum());
-            return Result.ok(map);
-        }
-        return Result.error("没有查询到满足条件的面值信息！");
-    }
-    @RequestMapping(value = "/selectmianzhi")
-    public Result selectmianzhi(MianzhiEntity mianzhiEntity){
-        PageInfo<MianzhiEntity> pageInfo = mianzhiService.selectMianzhi(mianzhiEntity);
-        List<MianzhiEntity> list = pageInfo.getList();
-        if (list.size() > 0 && list !=null){
-            Map<String, Object> map = new HashMap<>();
-            map.put("dataList",list);
             return Result.ok(map);
         }
         return Result.error("没有查询到满足条件的面值信息！");

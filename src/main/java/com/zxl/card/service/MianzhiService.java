@@ -1,6 +1,7 @@
 package com.zxl.card.service;
 
 import com.github.pagehelper.PageInfo;
+import com.zxl.card.entity.CardEntity;
 import com.zxl.card.entity.MianzhiEntity;
 
 /**
@@ -21,6 +22,13 @@ public interface MianzhiService{
      * @return
      */
     int deleteMianzhi(Integer mId);
+
+    /**
+     * 修改用户信息
+     * @param mianzhiEntity 用户实体
+     * @return
+     */
+    int updateMianzhi(MianzhiEntity mianzhiEntity);
 
 
     /**

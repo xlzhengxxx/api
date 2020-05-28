@@ -41,4 +41,12 @@ public class CardServiceImpl implements CardService{
         List<CardEntity> list = cardMapper.selectCard(cardEntity);
         return new PageInfo<>(list);
     }
+
+    @Override
+    public PageInfo<CardEntity> selectCardUse(CardEntity cardEntity) {
+        //初始化分页
+        PageHelper.startPage(cardEntity.getCurrentPage(),cardEntity.getPageSize());
+        List<CardEntity> list = cardMapper.selectCardUse(cardEntity);
+        return new PageInfo<>(list);
+    }
 }

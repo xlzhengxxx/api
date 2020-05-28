@@ -10,8 +10,8 @@ import java.util.List;
 */
 public interface CardtypeMapper extends Mapper<CardtypeEntity> {
     /**
-     * 根据条件查询用户信息
-     * @param cardtypeEntity 用户实体
+     * 根据条件查询点卡种类信息
+     * @param cardtypeEntity 点卡种类实体
      * @return
      */
     List<CardtypeEntity> selectCardtype(CardtypeEntity cardtypeEntity);

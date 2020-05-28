@@ -3,36 +3,45 @@ package com.zxl.card.service;
 import com.github.pagehelper.PageInfo;
 import com.zxl.card.entity.CardEntity;
 
+import java.util.List;
+
 /**
 *点卡管理事务层
 */
 public interface CardService{
 
     /**
-     * 添加用户
+     *
      * @param cardEntity
      * @return
      */
     int addCard(CardEntity cardEntity);
 
     /**
-     * 删除用户信息
+     *
      * @param cId 点卡 id
      * @return
      */
     int deleteCard(Integer cId);
 
     /**
-     * 修改用户信息
-     * @param cardEntity 用户实体
+     *
+     * @param cardEntity
      * @return
      */
     int updateCard(CardEntity cardEntity);
 
     /**
-     * 查询满足条件的用户信息
-     * @param cardEntity 用户实体
+     *
+     * @param cardEntity
      * @return
      */
     PageInfo<CardEntity> selectCard(CardEntity cardEntity);
+
+    /**
+     * 根据条件查询点卡信息
+     * @param cardEntity 点卡实体
+     * @return
+     */
+   PageInfo<CardEntity> selectCardUse(CardEntity cardEntity);
 }

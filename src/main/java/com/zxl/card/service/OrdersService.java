@@ -3,6 +3,8 @@ package com.zxl.card.service;
 import com.github.pagehelper.PageInfo;
 import com.zxl.card.entity.OrdersEntity;
 
+import java.util.List;
+
 /**
 * 订单管理事务层
 */
@@ -35,4 +37,20 @@ public interface OrdersService{
      * @return
      */
     PageInfo<OrdersEntity> selectOrders(OrdersEntity ordersEntity);
+    /**
+     * 查询订单信息
+     * @return
+     */
+    int selectWeekOrders();
+
+    int selectTodayOrders();
+
+    int selectHistoryOrders();
+
+    /**
+     * 根据条件查询订单信息
+     * @param ordersEntity 订单实体
+     * @return
+     */
+    List<OrdersEntity> selectPriceSum(OrdersEntity ordersEntity);
 }

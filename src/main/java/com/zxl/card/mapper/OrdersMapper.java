@@ -11,9 +11,19 @@ import java.util.List;
 public interface OrdersMapper extends Mapper<OrdersEntity> {
 
     /**
-     * 根据条件查询用户信息
-     * @param ordersEntity 用户实体
+     * 根据条件查询订单信息
+     * @param ordersEntity 订单实体
      * @return
      */
     List<OrdersEntity> selectOrders(OrdersEntity ordersEntity);
+
+    int selectWeekOrders();
+    int selectTodayOrders();
+    int selectHistoryOrders();
+    /**
+     * 根据条件查询订单信息
+     * @param ordersEntity 订单实体
+     * @return
+     */
+    List<OrdersEntity> selectPriceSum(OrdersEntity ordersEntity);
 }

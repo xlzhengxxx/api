@@ -12,22 +12,41 @@
     <result column="c_price" jdbcType="DOUBLE" property="cPrice" />
     <result column="c_state" jdbcType="INTEGER" property="cState" />
   </resultMap>
+  <resultMap id="CardResultMap" type="com.zxl.card.entity.CardEntity">
+    <result column="m_name" property="mName" />
+    <result column="t_name" property="tName" />
+    <result column="t_img" property="tImg" />
+  </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Fri May 22 10:45:23 CST 2020.-->
     c_id, c_number, c_password, c_type, m_id, c_price,c_state
   </sql>
   <select id="selectCard" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"></include>
-    from card
+    select c.c_id, c.c_number, c.c_password, t.t_name, m.m_name, c.c_price,c.c_state
+    from card c
+    join cardtype t on t.t_id = c.c_type
+    join mianzhi m on m.m_id = c.m_id
     <where>
       <if test="cNumber != null and cNumber != ''">
-        c_number like concat('%',#{cNumber},'%')
+        c.c_number like concat('%',#{cNumber},'%')
       </if>
-      <if test="cType != null and cType != ''">
-        and c_type = #{cType}
+      <if test="tName != null and tName != ''">
+        and t.t_name like concat('%',#{tName},'%')
       </if>
-      <if test="mId != null and mId != ''">
-        and m_id = #{mId}
+      <if test="mName != null and mName != ''">
+        and m.m_name like concat('%',#{mName},'%')
+      </if>
+    </where>
+  </select>
+  <select id="selectCardUse" resultMap="CardResultMap">
+    select c.c_id, c.c_number, c.c_password, t.t_name, t.t_img, m.m_name, c.c_price
+    from card c
+    join cardtype t on t.t_id = c.c_type
+    join mianzhi m on m.m_id = c.m_id
+    <where>
+      c.c_state = 2
+      <if test="tName != null and tName != ''">
+        and t.t_name like concat('%',#{tName},'%')
       </if>
     </where>
   </select>

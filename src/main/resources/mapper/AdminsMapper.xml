@@ -27,4 +27,10 @@
     </where>
 
   </select>
+  <select id="login" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from admins
+    where a_number = #{aNumber} and a_password = #{aPassword}
+
+  </select>
 </mapper>

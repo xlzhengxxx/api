@@ -54,6 +54,14 @@ public class CardEntity implements Serializable {
     @Column(name="c_state")
     private Integer cState;
 
+    @Column(name="t_name")
+    private String tName;
+
+    @Column(name="m_name")
+    private String mName;
+
+    @Column(name="t_img")
+    private String tImg;
     /**
      * 每页条数
      */

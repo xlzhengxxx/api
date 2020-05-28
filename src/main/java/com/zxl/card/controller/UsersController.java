@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,7 @@ public class UsersController {
      */
     @RequestMapping(value = "/addUsers")
     public Result addUsers(@RequestBody UsersEntity usersEntity){
+        usersEntity.setUDate(new Date());
         int i = usersService.addUsers(usersEntity);
         if (i > 0){
             return Result.ok("添加用户信息成功！");

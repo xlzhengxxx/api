@@ -41,4 +41,25 @@ public class OrdersServiceImpl implements OrdersService{
         List<OrdersEntity> list = ordersMapper.selectOrders(ordersEntity);
         return new PageInfo<>(list);
     }
+
+    @Override
+    public int selectWeekOrders() {
+        return ordersMapper.selectWeekOrders();
+    }
+
+    @Override
+    public int selectTodayOrders() {
+        return ordersMapper.selectTodayOrders();
+    }
+
+    @Override
+    public int selectHistoryOrders() {
+        return ordersMapper.selectHistoryOrders();
+    }
+
+    @Override
+    public List<OrdersEntity> selectPriceSum(OrdersEntity ordersEntity) {
+        return ordersMapper.selectOrders(ordersEntity);
+
+    }
 }

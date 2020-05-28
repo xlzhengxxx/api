@@ -68,7 +68,7 @@ public class CaretypeController {
     }
 
     /**
-     * 查询满足条件的点卡信息
+     * 查询满足条件的点卡种类信息
      * @param cardtypeEntity 点卡种类实体
      * @return
      */

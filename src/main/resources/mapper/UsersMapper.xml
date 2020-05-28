@@ -10,9 +10,10 @@
     <result column="u_email" jdbcType="VARCHAR" property="uEmail" />
     <result column="u_phone" jdbcType="VARCHAR" property="uPhone" />
     <result column="u_state" jdbcType="INTEGER" property="uState" />
+    <result column="u_date" jdbcType="TIMESTAMP" property="uDate" />
   </resultMap>
   <sql id="Base_Column_List">
-    u_id, u_number, u_name, u_password, u_email, u_phone, u_state
+    u_id, u_number, u_name, u_password, u_email, u_phone, u_state,u_date
   </sql>
 
   <!--查询满足条件的用户信息-->
@@ -28,5 +29,7 @@
       </if>
     </where>
   </select>
-
+  <select id="selectTodayUsers" resultMap="BaseResultMap">
+    select count(u_id) from users where to_days(u_date) = to_days(now())
+  </select>
 </mapper>

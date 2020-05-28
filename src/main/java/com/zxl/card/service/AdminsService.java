@@ -36,4 +36,12 @@ public interface AdminsService{
      */
     PageInfo<AdminsEntity> selectAdmins(AdminsEntity adminsEntity);
 
+    /**
+     * 根据条件查询管理员信息
+     * @param aNumber 管理员账号
+     * @param aPassword 管理员密码
+     * @return
+     */
+    AdminsEntity login(String aNumber,String aPassword);
+
 }

@@ -16,4 +16,11 @@ public interface CardMapper extends Mapper<CardEntity> {
      * @return
      */
     List<CardEntity> selectCard(CardEntity cardEntity);
+
+    /**
+     * 根据条件查询用户信息
+     * @param cardEntity 用户实体
+     * @return
+     */
+    List<CardEntity> selectCardUse(CardEntity cardEntity);
 }

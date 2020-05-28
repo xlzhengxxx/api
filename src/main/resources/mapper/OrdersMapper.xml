@@ -12,9 +12,48 @@
     <result column="o_price" jdbcType="VARCHAR" property="oPrice" />
     <result column="c_id" jdbcType="INTEGER" property="cId" />
     <result column="o_state" jdbcType="INTEGER" property="oState" />
+    <association property="com.zxl.card.entity.CardEntity" column="cid" select="com.zxl.card.mapper.CardMapper.selectPwd"></association>
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Fri May 22 10:45:46 CST 2020.-->
     o_id, o_date, t_id, u_id, m_id, o_price, c_id, o_state
   </sql>
+  <select id="selectOrders"  resultMap="ordersResultMap">
+    select o.o_date,t.t_name,u.u_number,m.m_name,o.o_price,c.c_number,c.c_password,o.o_state from orders o
+    join cardtype t on o.t_id=t.t_id
+    join users u on o.u_id = u.u_id
+    join mianzhi m on o.m_id = m.m_id
+    join card c on o.c_id = c.c_id
+  </select>
+  <resultMap id="ordersResultMap" type="com.zxl.card.entity.OrdersEntity">
+    <result column="t_name" property="tName"></result>
+    <result column="u_number" property="uNumber"></result>
+    <result column="m_name" property="mName"></result>
+    <result column="c_number" property="cNumber"></result>
+    <result column="c_password" property="cPassword"></result>
+  </resultMap>
+
+  <select id="selectWeekOrders" resultType="integer">
+    select count(*) ocount from orders where <![CDATA[DATE_SUB(CURDATE(), INTERVAL 7 DAY)  <= date(o_date) ]]>
+  </select>
+  <select id="selectTodayOrders"  resultType="integer">
+    select count(*) ocount from orders where to_days(o_date) = to_days(now())
+  </select>
+  <select id="selectHistoryOrders"  resultType="integer">
+    select count(*) ocount from orders
+  </select>
+
+  <select id="selectPriceSum"  resultMap="ordersResultMap">
+  SELECT SUM(CONVERT(o.o_price,DECIMAL(10,2))),t.t_name
+  FROM orders o
+  JOIN cardtype t ON o.t_id = t.t_id
+  GROUP BY t.t_id
+  </select>
+  <select id="selectOrdersSum"  resultMap="ordersResultMap">
+ SELECT COUNT(*),t.t_name
+  FROM orders o
+  JOIN cardtype t ON o.t_id = t.t_id
+  GROUP BY t.t_id
+  </select>
+
 </mapper>

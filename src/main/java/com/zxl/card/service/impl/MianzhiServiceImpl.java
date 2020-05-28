@@ -30,6 +30,11 @@ public class MianzhiServiceImpl implements MianzhiService{
     }
 
     @Override
+    public int updateMianzhi(MianzhiEntity mianzhiEntity) {
+        return mianzhiMapper.updateByPrimaryKeySelective(mianzhiEntity);
+    }
+
+    @Override
     public PageInfo<MianzhiEntity> selectMianzhi(MianzhiEntity mianzhiEntity) {
         //初始化分页
         PageHelper.startPage(mianzhiEntity.getCurrentPage(),mianzhiEntity.getPageSize());
